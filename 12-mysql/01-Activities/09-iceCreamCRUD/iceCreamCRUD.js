@@ -1,16 +1,19 @@
-var mysql = require("mysql");
+const dotenv = require('/usr/local/lib/node_modules/dotenv')
+  .config({
+    //symlink git = /Users/macos_highsierra_ss/git
+    path: 'git/.env'
+  });
 
-var connection = mysql.createConnection({
-  host: "localhost",
+if (dotenv.error) {
+  throw dotenv.error;
+}
 
-  // Your port; if not 3306
-  port: 3306,
-
-  // Your username
-  user: "root",
-
-  // Your password
-  password: "",
+const mysql = require('/usr/local/lib/node_modules/mysql');
+const connection = mysql.createConnection({
+  // port: 3306,
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
   database: "ice_creamDB"
 });
 

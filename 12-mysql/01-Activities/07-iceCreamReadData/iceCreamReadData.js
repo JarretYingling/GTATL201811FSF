@@ -1,29 +1,46 @@
-var mysql = require("mysql");
+const dotenv = require('/usr/local/lib/node_modules/dotenv')
+  .config({
+    //symlink git = /Users/macos_highsierra_ss/git
+    path: 'git/.env'
+  });
 
-var connection = mysql.createConnection({
-  host: "localhost",
+if (dotenv.error) {
+  throw dotenv.error;
+}
 
-  // Your port; if not 3306
-  port: 3306,
-
-  // Your username
-  user: "root",
-
-  // Your password
-  password: "",
+const mysql = require('/usr/local/lib/node_modules/mysql');
+const con = mysql.createConnection({
+  // port: 3306,
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
   database: "ice_creamDB"
 });
 
-connection.connect(function(err) {
+/*
+con.connect(function (err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId);
+  console.log("Connected!");
+});
+*/
+
+/*
+const mysqlQuery = con.query(sql, function (err, result) {
+  if (err) throw err;
+  console.log('Result: ' + result);
+});
+*/
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("connected as id " + con.threadId);
   afterConnection();
 });
 
 function afterConnection() {
-  connection.query("SELECT * FROM products", function(err, res) {
+  con.query("SELECT * FROM products", function(err, res) {
     if (err) throw err;
     console.log(res);
-    connection.end();
+    con.end();
   });
 }

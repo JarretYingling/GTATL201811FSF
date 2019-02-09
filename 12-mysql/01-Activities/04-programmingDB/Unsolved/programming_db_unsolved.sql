@@ -7,15 +7,16 @@ CREATE DATABASE programming_db;
 
 CREATE TABLE programming_languages(
   -- Create a numeric column called "id" which will automatically increment its default value as we create new rows. --
-
+	id INTEGER NOT NULL UNIQUE AUTO_INCREMENT,
   -- Create a string column called "language" --
-
+	language VARCHAR(255),
   -- Create an integer column called "rating" --
-
+	rating INT,
   -- Create a boolean column called "mastered" which will automatically fill --
   -- with true when a new row is made and the value isn't otherwise defined. --
-
+	mastered BOOLEAN DEFAULT true,
   -- Set the id as this table's primary key
+  PRIMARY KEY (id)
 );
 
 -- Create new example rows
