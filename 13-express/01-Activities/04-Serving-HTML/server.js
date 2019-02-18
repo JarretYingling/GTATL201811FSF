@@ -11,17 +11,36 @@ var server = http.createServer(handleRequest);
 // Create a function for handling the requests and responses coming into our server
 function handleRequest(req, res) {
 
-  // Here we use the fs package to read our index.html file
-  fs.readFile(__dirname + "/index.html", function(err, data) {
+  const path =  req.url
 
-    // We then respond to the client with the HTML page by specifically telling the browser that we are delivering
-    // an html file.
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(data);
-  });
+  if (path === '/') {
+    
+      // Here we use the fs package to read our index.html file
+      fs.readFile(__dirname + "/Home.html", function (err, data) {
+    
+        // We then respond to the client with the HTML page by specifically telling the browser that we are delivering
+        // an html file.
+        res.writeHead(200, {
+          "Content-Type": "text/html"
+        });
+        res.end(data);
+      });
+
+  } else if (path === '/portfolio') {
+
+      // Here we use the fs package to read our index.html file
+      fs.readFile(__dirname + "/Fav.html", function (err, data) {
+    
+        // We then respond to the client with the HTML page by specifically telling the browser that we are delivering
+        // an html file.
+        res.writeHead(200, {
+          "Content-Type": "text/html"
+        });
+        res.end(data);
+      });
+  }
 }
-
 // Starts our server
-server.listen(PORT, function() {
+server.listen(PORT, function () {
   console.log("Server is listening on PORT: " + PORT);
 });
