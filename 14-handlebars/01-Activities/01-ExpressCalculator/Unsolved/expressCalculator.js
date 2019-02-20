@@ -1,3 +1,5 @@
+"use strict";
+
 // Dependencies
 var express = require("express");
 
@@ -11,10 +13,13 @@ var app = express();
 // Routes
 // What routes do you need to have? Which ones are optional?
 // TODO Add your routes here
-app.get("", function(req, res) {
-
+app.get("/:operation/:firstNum/:secondNum", function(req, res) {
+  console.log(res);
   // TODO parse out the variables from the request
   // Parameters are received from the URL
+  let operation = req.params.operation;
+  let firstNum = parseInt(req.params.firstNum);
+  let secondNum = parseInt(req.params.secondNum);
   // TODO make sure they're converted to integers (and not strings)
   // Parameters are converted to integers
 
@@ -24,21 +29,28 @@ app.get("", function(req, res) {
   switch (operation) {
   // BONUS - How could you use * + etc. inside the app.get()?
   case "add":
+  case "+":
     // Add your logic here. Pun intended.
+    result = firstNum + secondNum;
     break;
   case "subtract":
+  case "-":
     // Subtract logic
+    result = firstNum - secondNum;
     break;
   case "multiply":
+  case "*":
     // Multiply
+    result = firstNum * secondNum;
     break;
   case "divide":
+  case "/":
     // Divide
+    result = firstNum / secondNum;
     break;
   default:
     // Handle anything that isn't specified
-    result =
-        "Sorry! The only valid operations are add, subtract, multiply, and divide.";
+    result = "Sorry! The only valid operations are add, subtract, multiply, and divide.";
   }
 
   // We return the result back to the user in the form of a string
