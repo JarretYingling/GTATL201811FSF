@@ -1,5 +1,5 @@
 {
-  "name": "exercise2_magical_schools",
+  "name": "ben_and_jerry",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
-    "mysql": "^2.16.0"
+    "express-handlebars": "^3.0.0"
   }
 }
