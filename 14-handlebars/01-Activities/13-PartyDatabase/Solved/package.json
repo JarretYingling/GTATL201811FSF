@@ -1,12 +1,11 @@
 {
-  "name": "exercise3",
+  "name": "exercise5",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "dependencies": {
     "mysql": "^2.16.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
