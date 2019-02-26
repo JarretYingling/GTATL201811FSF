@@ -1,17 +1,16 @@
 {
-  "name": "exercise1_feel_state",
+  "name": "Unsolved",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^6.2.0",
-    "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "mysql": "^2.10.2"
+    "mysql": "^2.16.0"
   }
 }
