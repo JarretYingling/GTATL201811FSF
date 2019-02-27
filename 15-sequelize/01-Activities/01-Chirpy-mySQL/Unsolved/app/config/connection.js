@@ -2,16 +2,21 @@
 // CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
 // *********************************************************************************
 
+// require dotenv
+const dotenv = require("dotenv").config({
+  path: "git/.env"
+})
+
 // Require mysql
 var mysql = require("mysql");
 
 // Set up our connection information
 var connection = mysql.createConnection({
-  host: "",
-  port: 3306,
-  user: "",
-  password: "",
-  database: ""
+  host: process.env.MYSQL_HOST,
+  port: process.env.MYSQL_PORT,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: "chirpy"
 });
 
 // Connect to the database
@@ -20,7 +25,7 @@ connection.connect(function(err) {
     console.error("error connecting: " + err.stack);
     return;
   }
-  console.log("connected as id " + connection.threadId);
+  console.log("mysql id " + connection.threadId);
 });
 
 // Export connection
