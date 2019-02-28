@@ -35,7 +35,7 @@ connection.connect(function (err) {
     console.error("error connecting: " + err.stack);
     return;
   }
-  console.log(`id ${connection.threadId} listening on port ${PORT}`);
+  console.log(`id ${connection.threadId} connected on port ${process.env.MYSQL_PORT}`);
 });
 
 // Routes
