@@ -24,7 +24,14 @@ module.exports = function(app) {
   app.post("/api/todos", function(req, res) {
     // Write code here to create a new todo and save it to the database
     // and then res.json back the new todo to the user
-
+    console.log(req.body);
+    // db.todo.create({req.body}).then(function(sequelizeResult){res.status(200).json(sequelizeResult);})
+    db.todo.create({
+      text: req.body.text,
+      complete: req.body.complete
+    }).then(function(sequelizeResult){
+      res.status(200).json(sequelizeResult);
+    })
   });
 
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from
