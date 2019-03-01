@@ -6,7 +6,7 @@
 // =============================================================
 
 // Requiring our Todo model
-var db = require("../models");
+var db = require("../models"); //defaults to index.js
 
 // Routes
 // =============================================================
@@ -14,8 +14,10 @@ module.exports = function(app) {
 
   // GET route for getting all of the todos
   app.get("/api/todos", function(req, res) {
-    // Write code here to retrieve all of the todos from the database and res.json them
-    // back to the user
+    // Write code here to retrieve all todos from database and res.json them back to user
+    db.todo.findAll().then(function(sequelizeResult){
+      res.status(200).json(sequelizeResult);
+    })
   });
 
   // POST route for saving a new todo. We can create todo with the data in req.body

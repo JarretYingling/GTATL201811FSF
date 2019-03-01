@@ -5,6 +5,7 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+const db = require("./models"); // requiring a directory will default to requiring the index.js
 
 // Sets up the Express App
 // =============================================================
@@ -26,4 +27,5 @@ require("./routes/api-routes.js")(app);
 // =============================================================
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
+  db.sequelize.sync();
 });
