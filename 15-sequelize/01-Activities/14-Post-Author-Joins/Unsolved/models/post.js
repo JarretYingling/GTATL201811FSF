@@ -20,7 +20,8 @@ module.exports = function(sequelize, DataTypes) {
     Post.belongsTo(models.Author, {
       foreignKey: {
         allowNull: false
-      }
+      },
+      onDelete: "cascade"
     });
   };
 

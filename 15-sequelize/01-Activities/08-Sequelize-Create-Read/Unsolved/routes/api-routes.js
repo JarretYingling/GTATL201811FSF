@@ -16,8 +16,8 @@ module.exports = function(app) {
   app.get("/api/todos", function(req, res) {
     // Write code here to retrieve all todos from database and res.json them back to user
     db.todo.findAll().then(function(sequelizeResult){
-      res.status(200).json(sequelizeResult);
-    })
+      res.json(sequelizeResult);
+    });
   });
 
   // POST route for saving a new todo. We can create todo with the data in req.body
