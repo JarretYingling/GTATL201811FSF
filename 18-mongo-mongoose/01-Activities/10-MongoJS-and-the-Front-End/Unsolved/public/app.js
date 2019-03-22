@@ -20,9 +20,34 @@
 // by writing a function that takes in data (JSON) and creates a table body
 function displayResults(data) {
   // Add to the table here...
+  $("tbody").empty();
+  data.forEach(function (data) {
+    var tr = $("<tr>").append(
+      $("<td>").text(data.name),
+      $("<td>").text(data.numLegs),
+      $("<td>").text(data.class),
+      $("<td>").text(data.weight),
+      $("<td>").text(data.whatIWouldReallyCallIt)
+    );
+    $("tbody").append(tr);
+  });
 }
 
-$.getJSON("/all", function(data) {
+$.getJSON("/all", function (data) {
   // Call our function to generate a table body
   displayResults(data);
+});
+
+$("#weight-sort").on("click", function () {
+  $.getJSON("/weight", function (data) {
+    // Call our function to generate a table body
+    displayResults(data);
+  });
+});
+
+$("#name-sort").on("click", function () {
+  $.getJSON("/name", function (data) {
+    // Call our function to generate a table body
+    displayResults(data);
+  });
 });
