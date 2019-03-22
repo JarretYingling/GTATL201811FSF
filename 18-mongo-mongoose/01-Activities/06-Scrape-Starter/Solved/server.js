@@ -1,6 +1,4 @@
-// Parses our HTML and helps us find elements
 var cheerio = require("cheerio");
-// Makes HTTP request for HTML page
 var axios = require("axios");
 
 // First, tell the console what server.js is doing
@@ -9,12 +7,12 @@ console.log("\n***********************************\n" +
             "from reddit's webdev board:" +
             "\n***********************************\n");
 
-// Making a request via axios for reddit's "webdev" board. The page's HTML is passed as the callback's third argument
-axios.get("https://old.reddit.com/r/webdev/").then(function(response) {
+// Making a request via axios for reddit's "webdev" board. We are sure to use old.reddit due to changes in HTML structure for the new reddit. The page's Response is passed as our promise argument.
+axios.get("https://old.reddit.com/r/webdev").then(function(response) {
 
-  // Load the HTML into cheerio and save it to a variable
+  // Load the Response into cheerio and save it to a variable
   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-  var $ = cheerio.load(response.data); 
+  var $ = cheerio.load(response.data);
 
   // An empty array to save the data that we'll scrape
   var results = [];
