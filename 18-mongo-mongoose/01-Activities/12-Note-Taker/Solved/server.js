@@ -14,9 +14,7 @@ var app = express();
 app.use(logger("dev"));
 
 // Parse request body as JSON
-app.use(express.urlencoded({
-  extended: true
-}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
@@ -29,7 +27,7 @@ var collections = ["notes"];
 var db = mongojs(databaseUrl, collections);
 
 // Log any mongojs errors to console
-db.on("error", function (error) {
+db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
@@ -37,19 +35,20 @@ db.on("error", function (error) {
 // ======
 
 // Simple index route
-app.get("/", function (req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname + "./public/index.html"));
 });
 
 // Handle form submission, save submission to mongo
-app.post("/submit", function (req, res) {
+app.post("/submit", function(req, res) {
   console.log(req.body);
   // Insert the note into the notes collection
-  db.notes.insert(req.body, function (error, saved) {
+  db.notes.insert(req.body, function(error, saved) {
     // Log any errors
     if (error) {
       console.log(error);
-    } else {
+    }
+    else {
       // Otherwise, send the note back to the browser
       // This will fire off the success function of the ajax request
       res.send(saved);
@@ -58,13 +57,14 @@ app.post("/submit", function (req, res) {
 });
 
 // Retrieve results from mongo
-app.get("/all", function (req, res) {
+app.get("/all", function(req, res) {
   // Find all notes in the notes collection
-  db.notes.find({}, function (error, found) {
+  db.notes.find({}, function(error, found) {
     // Log any errors
     if (error) {
       console.log(error);
-    } else {
+    }
+    else {
       // Otherwise, send json of the notes back to user
       // This will fire off the success function of the ajax request
       res.json(found);
@@ -73,21 +73,23 @@ app.get("/all", function (req, res) {
 });
 
 // Select just one note by an id
-app.get("/find/:id", function (req, res) {
+app.get("/find/:id", function(req, res) {
   // When searching by an id, the id needs to be passed in
   // as (mongojs.ObjectId(IdYouWantToFind))
 
   // Find just one result in the notes collection
-  db.notes.findOne({
+  db.notes.findOne(
+    {
       // Using the id in the url
       _id: mongojs.ObjectId(req.params.id)
     },
-    function (error, found) {
+    function(error, found) {
       // log any errors
       if (error) {
         console.log(error);
         res.send(error);
-      } else {
+      }
+      else {
         // Otherwise, send the note to the browser
         // This will fire off the success function of the ajax request
         console.log(found);
@@ -98,14 +100,16 @@ app.get("/find/:id", function (req, res) {
 });
 
 // Update just one note by an id
-app.post("/update/:id", function (req, res) {
+app.post("/update/:id", function(req, res) {
   // When searching by an id, the id needs to be passed in
   // as (mongojs.ObjectId(IdYouWantToFind))
 
   // Update the note that matches the object id
-  db.notes.update({
+  db.notes.update(
+    {
       _id: mongojs.ObjectId(req.params.id)
-    }, {
+    },
+    {
       // Set the title, note and modified parameters
       // sent in the req body.
       $set: {
@@ -114,12 +118,13 @@ app.post("/update/:id", function (req, res) {
         modified: Date.now()
       }
     },
-    function (error, edited) {
+    function(error, edited) {
       // Log any errors from mongojs
       if (error) {
         console.log(error);
         res.send(error);
-      } else {
+      }
+      else {
         // Otherwise, send the mongojs response to the browser
         // This will fire off the success function of the ajax request
         console.log(edited);
@@ -130,17 +135,19 @@ app.post("/update/:id", function (req, res) {
 });
 
 // Delete One from the DB
-app.get("/delete/:id", function (req, res) {
+app.get("/delete/:id", function(req, res) {
   // Remove a note using the objectID
-  db.notes.remove({
+  db.notes.remove(
+    {
       _id: mongojs.ObjectID(req.params.id)
     },
-    function (error, removed) {
+    function(error, removed) {
       // Log any errors from mongojs
       if (error) {
         console.log(error);
         res.send(error);
-      } else {
+      }
+      else {
         // Otherwise, send the mongojs response to the browser
         // This will fire off the success function of the ajax request
         console.log(removed);
@@ -151,14 +158,15 @@ app.get("/delete/:id", function (req, res) {
 });
 
 // Clear the DB
-app.get("/clearall", function (req, res) {
+app.get("/clearall", function(req, res) {
   // Remove every note from the notes collection
-  db.notes.remove({}, function (error, response) {
+  db.notes.remove({}, function(error, response) {
     // Log any errors to the console
     if (error) {
       console.log(error);
       res.send(error);
-    } else {
+    }
+    else {
       // Otherwise, send the mongojs response to the browser
       // This will fire off the success function of the ajax request
       console.log(response);
@@ -168,6 +176,6 @@ app.get("/clearall", function (req, res) {
 });
 
 // Listen on port 3000
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log("App running on port 3000!");
 });
