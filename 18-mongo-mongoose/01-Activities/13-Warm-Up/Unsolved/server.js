@@ -26,6 +26,10 @@ db.on("error", function(error) {
   console.log("Database Error:", error);
 });
 
+db.on("connect", function(error){
+  console.log("mongodb connected")
+});
+
 // Routes
 // ======
 
@@ -42,24 +46,90 @@ app.post("/submit", function(req, res) {
   // we have to do it here, because the ajax post will convert it
   // to a string instead of a boolean
   book.read = false;
+
+  db.books.insert(book, (error, data) => {
+    if (error) {
+      return res.status(500).json({
+        error: error
+      })
+    }
+    console.log("inserting data")
+    return res.json(data);
+  });
+
 });
 
 // Find all books marked as read
-app.get("/read", function(req, res) {});
+app.get("/read", function(req, res) {
+  db.books.find({
+    read: true
+  }, (error, data) => {
+    if (error) {
+      return res.status(500).json({
+        error: error
+      })
+    }
+    console.log("inserting data")
+    return res.json(data);
+  })
+});
 
 // Find all books marked as unread
-app.get("/unread", function(req, res) {});
+app.get("/unread", function(req, res) {
+  db.books.find({
+    read: false
+  }, (error, data) => {
+    if (error) {
+      return res.status(500).json({
+        error: error
+      })
+    }
+    console.log("inserting data")
+    return res.json(data);
+  })
+});
 
 // Mark a book as having been read
 app.put("/markread/:id", function(req, res) {
   // Remember: when searching by an id, the id needs to be passed in
   // as (mongojs.ObjectId(IdYouWantToFind))
+  db.books.update({
+    _id: mongojs.ObjectId(req.params.id)
+  },
+  {
+    $set: {
+      read: true
+    }
+  }, (error, data) => {
+    if (error) {
+      return res.status(500).json({
+        error: error
+      })
+    }
+    console.log("inserting data")
+    return res.json(data);
+  });
 });
 
 // Mark a book as having been not read
 app.put("/markunread/:id", function(req, res) {
   // Remember: when searching by an id, the id needs to be passed in
   // as (mongojs.ObjectId(IdYouWantToFind))
+  db.books.update({
+    _id: mongojs.ObjectId(req.params.id)
+  }, {
+    $set: {
+      read: false
+    }
+  }, (error, data) => {
+    if (error) {
+      return res.status(500).json({
+        error: error
+      })
+    }
+    console.log("inserting data")
+    return res.json(data);
+  });
 });
 
 // Listen on port 3000
