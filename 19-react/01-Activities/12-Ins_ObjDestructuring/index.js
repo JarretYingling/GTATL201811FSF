@@ -1,34 +1,34 @@
-const sansa = {
-  name: "Sansa Stark",
+const arya = {
+  name: "Arya Stark",
   parents: ["Eddard Stark", "Catelyn Stark"]
 };
 
-const daenerys = {
-  name: "Daenerys Targaryen",
-  parents: ["Aerys II Targaryen", "Rhaella Targaryen"]
+const jaime = {
+  name: "Jaime Lannister",
+  parents: ["Tywin Lannister", "Joanna Lannister"]
 };
 
 // In the past, if we wanted to pull off an object's property we'd have to do something like this:
 
-const sansaName = sansa.name;
-const sansaParents = sansa.parents;
+const aryaName = arya.name;
+const aryaParents = arya.parents;
 
-console.log(sansaName); // prints `"Sansa Stark"`
-console.log(sansaParents); // prints `["Eddard Stark", "Catelyn Stark"]`
+console.log(aryaName); // prints `"Arya Stark"`
+console.log(aryaParents); // prints `["Eddard Stark", "Catelyn Stark"]`
 
 // Now with ES6 object destructuring syntax, we can do this:
 
-const { name, parents } = daenerys;
+const { name, parents } = cersei;
 
-console.log(name); // prints `"Daenerys Targaryen"`
-console.log(parents); // prints `["Aerys II Targaryen", "Rhaella Targaryen"]`
+console.log(name); // prints `"Jaime Lannister"`
+console.log(parents); // prints `["Tywin Lannister", "Joanna Lannister"]`
 
-// We can also rename our destructured properties like so
+// We can also rename our destructured properties like so:
 
-const { name: daenerysName } = daenerys;
-console.log(daenerysName); // prints `"Daenerys Targaryen"`
+const { name: jaimeName } = jaime;
+console.log(jaimeName); // prints `"Jaime Lannister"`
 
-// We can also destructure parameters using the same feature. e.g. previously we might have done something like this
+// We can also destructure parameters using the same feature. e.g. previously we might have done something like this:
 
 const logCharacter = character =>
   console.log(
@@ -40,7 +40,7 @@ const logCharacter = character =>
       "."
   );
 
-logCharacter(sansa);
+logCharacter(arya);
 
 // But now we can do this:
 
@@ -49,4 +49,4 @@ const betterLogCharacter = ({ name, parents }) =>
     name + "'s parents are: " + parents[0] + " and " + parents[1] + "."
   );
 
-betterLogCharacter(daenerys);
+betterLogCharacter(jaime);
