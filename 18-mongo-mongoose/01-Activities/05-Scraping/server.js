@@ -14,7 +14,7 @@ axios.get("https://old.reddit.com/r/webdev/").then(function(response) {
 
   // Load the HTML into cheerio and save it to a variable
   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-  var $ = cheerio.load(response.data); 
+  var $ = cheerio.load(response.data);
 
   // An empty array to save the data that we'll scrape
   var results = [];
