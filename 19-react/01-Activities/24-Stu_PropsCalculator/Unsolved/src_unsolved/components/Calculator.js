@@ -1,5 +1,4 @@
 import React from "react";
-import Math from "./Math";
 
 // Create a new component named "Math"
 // Render one Math component in the place of each "?" mark
@@ -9,10 +8,10 @@ import Math from "./Math";
 function Calculator() {
   return (
     <div>
-      <p>19 + 341 = <Math num1={19} num2={341} operator="+" /></p>
-      <p>42 - 17 = <Math num1={42} num2={17} operator="-" /></p>
-      <p>100 * 3 = <Math num1={100} num2={3} operator="*" /></p>
-      <p>96 / 4 = <Math num1={96} num2={4} operator="/"/></p>
+      <p>19 + 341 = ?</p>
+      <p>42 - 17 = ?</p>
+      <p>100 * 3 = ?</p>
+      <p>96 / 4 = ?</p>
     </div>
   );
 }
