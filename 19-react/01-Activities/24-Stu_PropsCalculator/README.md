@@ -18,7 +18,7 @@ In this activity we will write a component that can perform some arithmetic usin
 
   * `operator` -  a string representing an arithmetic operator, e.g. "+", "-", "*", "/"
 
-  * `num3` - a number
+  * `num2` - a number
 
 * The Math component should render the result of problem in a `span` tag. e.g. 19 + 341 = 360
 

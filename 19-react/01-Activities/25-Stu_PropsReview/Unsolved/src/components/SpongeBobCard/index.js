@@ -7,7 +7,7 @@ function SpongeBobCard() {
       <div className="img-container">
         <img
           alt="SpongeBob"
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/Spongebob-squarepants.svg/666px-Spongebob-squarepants.svg.png"
+          src="https://vignette.wikia.nocookie.net/spongebobgalaxy/images/0/07/SpongeBob_SquarePants.png/revision/latest?cb=20171228024014"
         />
       </div>
       <div className="content">
