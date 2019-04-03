@@ -1,4 +1,4 @@
-# AJAX
+# AJAX - 15 minutes
 
 In this activity we will create a simple React application with which users can query the OMDB API and display information about the movie searched for.
 

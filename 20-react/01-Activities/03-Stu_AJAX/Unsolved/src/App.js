@@ -1,5 +1,5 @@
 import React from "react";
-import OmdbContainer from "./components/OmdbContainer";
+import { Card, Col, SearchForm } from "./components/omdb";
 
 function App() {
   return <OmdbContainer />;
