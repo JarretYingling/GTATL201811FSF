@@ -10,24 +10,23 @@ export function RecipeList({ children }) {
 }
 
 // RecipeListItem renders a bootstrap list item containing data from the recipe api call
-export function RecipeListItem(props) {
+export function RecipeListItem({thumbnail, title, ingredients, href}) {
   return (
     <li className="list-group-item">
       <Container>
         <Row>
           <Col size="xs-4 sm-2">
-            <Thumbnail src="http://img.recipepuppy.com/560556.jpg" />
+            <Thumbnail src={thumbnail} />
           </Col>
           <Col size="xs-8 sm-9">
-            <h3>Vegetable-Pasta Oven Omelet</h3>
+            <h3>{title}</h3>
             <p>
-              Ingredients: "tomato, onions, red pepper, garlic, olive oil, zucchini, cream cheese,
-              vermicelli, eggs, parmesan cheese, milk, italian seasoning, salt, black pepper"
+              Ingredients: {ingredients}
             </p>
             <a
               rel="noreferrer noopener"
               target="_blank"
-              href="http://find.myrecipes.com/recipes/recipefinder.dyn?action=displayRecipe&recipe_id=520763"
+              href={href}
             >
               Go to recipe!
             </a>
