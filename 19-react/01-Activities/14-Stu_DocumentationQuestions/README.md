@@ -14,7 +14,7 @@ In this activity, we will begin by installing a few helpful packages and then ex
 
 * While those are installing, work with your group to answer each of the following questions using the [ReactJS Documentation](https://facebook.github.io/react/):
 
-1. In the previous section we just installed two packages, Create React App. What are they for?
+1. In the previous section we installed Create React App. What is it for?
 
 2. What are some benefits of using ReactJS?
 
