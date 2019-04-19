@@ -33,6 +33,24 @@ function selectionSort(items) {
 
   // FILL IN YOUR CODE HERE
   // Use the above swap function when you are ready to start swapping elements in the array.
+  var len = items.length;
+  var min;
+
+  for (var i = 0; i < len; i++) {
+    min = i;
+
+    for (var j = i + 1; j < len; j++) {
+      if (items[j] < items[min]) {
+        min = j;
+      }
+    }
+
+    if (i !== min) {
+      swap(items, i, min)
+    }
+  }
+
+  return items;
 }
 
 // ================================================

@@ -22,7 +22,19 @@ for (var index = 0; index < arraySize; index++) {
 // ================================================
 // SOLUTION - Insertion Sort
 // ================================================
-
+var len = array.length;
+function insertionSort(array) {
+  for (let i = 0; i < len; i++) {
+    let index = array[i];
+    let j = i - 1;
+    while (j > -1 && index < array[j]) {
+      array[j + 1] = array[j];
+      j--;
+    }
+    array[j + 1] = index;
+  }
+  return array;
+}
 
 // ================================================
 // FUNCTION CALL
